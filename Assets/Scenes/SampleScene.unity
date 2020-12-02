@@ -1713,7 +1713,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 8.28
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1829,7 +1829,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5.98
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7119,7 +7119,7 @@ Transform:
   m_GameObject: {fileID: 187752724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 15.239999, y: 1.0900002, z: -6.6399994}
-  m_LocalScale: {x: 0.65, y: 0.05, z: 0.65}
+  m_LocalScale: {x: 1.5, y: 0.1, z: 1.5}
   m_Children:
   - {fileID: 45370377}
   - {fileID: 1745991547}
@@ -29787,7 +29787,7 @@ MonoBehaviour:
   m_LineType: 1
   m_MaxRaycastDistance: 30
   m_ReferenceFrame: {fileID: 0}
-  m_Velocity: 8
+  m_Velocity: 10
   m_Acceleration: 9.8
   m_AdditionalFlightTime: 0.5
   m_EndPointDistance: 30
@@ -29835,7 +29835,7 @@ MonoBehaviour:
   m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
-  m_AxisToPressThreshold: 0.2
+  m_AxisToPressThreshold: 0.5
   m_RotateAnchorLeft: 16
   m_RotateAnchorRight: 17
   m_MoveObjectIn: 14
@@ -33751,7 +33751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18830
+  m_Name: pb_Mesh18110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -34810,7 +34810,7 @@ MonoBehaviour:
   m_LineType: 1
   m_MaxRaycastDistance: 30
   m_ReferenceFrame: {fileID: 0}
-  m_Velocity: 8
+  m_Velocity: 10
   m_Acceleration: 9.8
   m_AdditionalFlightTime: 0.5
   m_EndPointDistance: 30
@@ -36135,7 +36135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701147245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.47, y: 17.81, z: 51.47}
+  m_LocalPosition: {x: 3.47, y: 15, z: 51.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1033655753}
@@ -36157,7 +36157,7 @@ MonoBehaviour:
   leftTeleportRay: {fileID: 1623433879}
   rightTeleportRay: {fileID: 1172892410}
   teleportActivateButton: 2
-  activateThreshold: 0.1
+  activateThreshold: 0.4
 --- !u!1001 &1702863086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36260,7 +36260,7 @@ Transform:
   m_GameObject: {fileID: 1714206125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 15.239999, y: 1.0900002, z: -6.6399994}
-  m_LocalScale: {x: 0.65, y: 0.05, z: 0.65}
+  m_LocalScale: {x: 1.5, y: 0.1, z: 1.5}
   m_Children:
   - {fileID: 2104628880}
   - {fileID: 117737600}
@@ -37214,7 +37214,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 3.21
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -37383,7 +37383,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.31
       minScalar: 1
       maxCurve:
         serializedVersion: 2
