@@ -66,6 +66,8 @@
     <Compile Include="Assets\LocomotionController.cs" />
     <Compile Include="Assets\Weistrasse.cs" />
     <Compile Include="Assets\fractalFlicking.cs" />
+    <None Include="Assets\SimpleLowPolyNature\Readme.txt" />
+    <None Include="Assets\SimpleLowPolyNature\Shaders\SimpleWater.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
