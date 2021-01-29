@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\LocomotionController.cs" />
     <Compile Include="Assets\Scripts\Weistrasse.cs" />
     <Compile Include="Assets\Scripts\fractalFlicking.cs" />
+    <Compile Include="Assets\SpawnBlock.cs" />
     <Compile Include="Assets\TetrisBlock.cs" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Readme.txt" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Shaders\SimpleWater.shader" />
