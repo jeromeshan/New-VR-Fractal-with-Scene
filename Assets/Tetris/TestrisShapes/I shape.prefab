@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8853965170485287661}
   - component: {fileID: 8853965170485287658}
   m_Layer: 0
-  m_Name: l shape
+  m_Name: I shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPoint: {x: 0.5, y: -0.5, z: 0}
+  inputSource: 4
+  gameOverText: {fileID: 0}
 --- !u!1 &8853965171775944336
 GameObject:
   m_ObjectHideFlags: 0

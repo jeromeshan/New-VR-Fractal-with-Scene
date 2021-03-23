@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -685,7 +685,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25862
+  m_Name: pb_Mesh20712
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2937,7 +2937,6 @@ GameObject:
   - component: {fileID: 895667750}
   - component: {fileID: 895667749}
   - component: {fileID: 895667746}
-  - component: {fileID: 895667745}
   - component: {fileID: 895667744}
   m_Layer: 0
   m_Name: XR Rig
@@ -2958,25 +2957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938f1e824481c3479de62addf0e29e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &895667745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895667743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac6916bc3db4214dbe74106e4ad724b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_System: {fileID: 895667749}
-  m_TurnSpeed: 60
-  m_InputBinding: 1
-  m_Controllers:
-  - {fileID: 0}
-  m_DeadzoneMin: 0.125
-  m_DeadzoneMax: 0.925
 --- !u!143 &895667746
 CharacterController:
   m_ObjectHideFlags: 0

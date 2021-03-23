@@ -2,10 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TetrisBlock : MonoBehaviour
 {
     public Vector3 rotationPoint;
+
+    public XRNode inputSource;
+
     private float previousTime;
     public static float fallTime = 0.8f;
     public static int height =20;
@@ -13,6 +19,8 @@ public class TetrisBlock : MonoBehaviour
 
     public GameObject gameOverText;
     private static Transform[,] grid = new Transform[width, height];
+
+    private Vector2 inputAxis;
 
     // Start is called before the first frame update
     void Start()
@@ -23,23 +31,28 @@ public class TetrisBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
+        device.TryGetFeatureValue(CommonUsages.secondary2DAxis, out inputAxis);
+
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if ( (inputAxis.x<0) && (inputAxis.x < -1.0f * Mathf.Abs(inputAxis.y)) )
         {
             transform.position += new Vector3(-1, 0, 0);
             if(!isValidMove())
                 transform.position += new Vector3(1, 0, 0);
 
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+       // else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if ((inputAxis.x > 0) && (inputAxis.x > Mathf.Abs(inputAxis.y)))    
         {
             transform.position += new Vector3(1, 0, 0);
             if (!isValidMove())
                 transform.position += new Vector3(-1, 0, 0);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        //else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if ((inputAxis.y > 0) && (inputAxis.y > Mathf.Abs(inputAxis.x)))
         {
-
-
 
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90); 
             if (!isValidMove())
@@ -47,7 +60,8 @@ public class TetrisBlock : MonoBehaviour
         }
 
 
-        if (Time.time- previousTime > (Input.GetKey(KeyCode.DownArrow)? fallTime/10 : fallTime ))
+        //if (Time.time- previousTime > (Input.GetKey(KeyCode.DownArrow)? fallTime/10 : fallTime ))
+        if (Time.time - previousTime > (((inputAxis.y < 0) && (inputAxis.y < -1.0f * Mathf.Abs(inputAxis.x))) ? fallTime / 10 : fallTime))
         {
             transform.position += new Vector3(0, -1, 0);
             if (!isValidMove())

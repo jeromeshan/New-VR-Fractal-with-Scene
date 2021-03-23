@@ -327,6 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationPoint: {x: 1, y: 0, z: 0}
+  inputSource: 4
+  gameOverText: {fileID: 0}
 --- !u!1 &8650998084720191025
 GameObject:
   m_ObjectHideFlags: 0
