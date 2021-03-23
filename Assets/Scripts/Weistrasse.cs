@@ -102,10 +102,10 @@ namespace Assets
             return z;
         }
 
-        public double[] CreateSignal(int L, double dt)
+        public double[] CreateSignal(int L, double dt, double D = 1.4, int N = 10, double sigma = 3.3, double b = 2.5, double s = 0.005)
         {
 
-            double[] y = weistrs(L, dt).Item2;
+            double[] y = weistrs(L, dt,D,N,sigma,b,s).Item2;
 
 
             return normSignal(y, L);
