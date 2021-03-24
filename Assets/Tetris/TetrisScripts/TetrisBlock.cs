@@ -13,6 +13,8 @@ public class TetrisBlock : MonoBehaviour
     public XRNode inputSource;
 
     private float previousTime;
+    private float previousActionTime;
+
     public static float fallTime = 0.8f;
     public static int height =20;
     public static int width = 10;
@@ -22,11 +24,15 @@ public class TetrisBlock : MonoBehaviour
 
     private Vector2 inputAxis;
 
+    private float timeDelay = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
-
+        previousActionTime = Time.time;
     }
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -36,32 +42,40 @@ public class TetrisBlock : MonoBehaviour
         device.TryGetFeatureValue(CommonUsages.secondary2DAxis, out inputAxis);
 
         //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        if ( (inputAxis.x<0) && (inputAxis.x < -1.0f * Mathf.Abs(inputAxis.y)) )
+        if (((Time.time - previousActionTime) > timeDelay) && (inputAxis.x< 0.5f) && (inputAxis.x < -1.0f * Mathf.Abs(inputAxis.y)) )
         {
             transform.position += new Vector3(-1, 0, 0);
             if(!isValidMove())
                 transform.position += new Vector3(1, 0, 0);
 
+            previousActionTime = Time.time;
+
         }
        // else if (Input.GetKeyDown(KeyCode.RightArrow))
-        else if ((inputAxis.x > 0) && (inputAxis.x > Mathf.Abs(inputAxis.y)))    
+        else if (((Time.time - previousActionTime) > timeDelay) && (inputAxis.x > 0.5f) && (inputAxis.x > Mathf.Abs(inputAxis.y)))    
         {
             transform.position += new Vector3(1, 0, 0);
             if (!isValidMove())
                 transform.position += new Vector3(-1, 0, 0);
+
+            previousActionTime = Time.time;
+
         }
         //else if (Input.GetKeyDown(KeyCode.UpArrow))
-        else if ((inputAxis.y > 0) && (inputAxis.y > Mathf.Abs(inputAxis.x)))
+        else if (((Time.time - previousActionTime) > timeDelay) && (inputAxis.y > 0.5f) && (inputAxis.y > Mathf.Abs(inputAxis.x)))
         {
 
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90); 
             if (!isValidMove())
                 transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90); ;
+
+            previousActionTime = Time.time;
+
         }
 
 
         //if (Time.time- previousTime > (Input.GetKey(KeyCode.DownArrow)? fallTime/10 : fallTime ))
-        if (Time.time - previousTime > (((inputAxis.y < 0) && (inputAxis.y < -1.0f * Mathf.Abs(inputAxis.x))) ? fallTime / 10 : fallTime))
+        if (Time.time - previousTime > (((inputAxis.y < 0.5f) && (inputAxis.y < -1.0f * Mathf.Abs(inputAxis.x))) ? fallTime / 10 : fallTime))
         {
             transform.position += new Vector3(0, -1, 0);
             if (!isValidMove())
