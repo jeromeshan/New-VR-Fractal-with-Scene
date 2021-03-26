@@ -8,25 +8,7 @@ using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[Serializable]
-public class FunctionParams
-{
-    public FunctionParams(double d, int n, double sigma, double b, double s)
-    {
-        D = d;
-        N = n;
-        this.sigma = sigma;
-        this.b = b;
-        this.s = s;
-    }
 
-    public double D;
-    public int N;
-    public double sigma;
-    public double b;
-    public double s;
-
-}
 
 public class fractalFlicking : MonoBehaviour
 {
@@ -41,40 +23,51 @@ public class fractalFlicking : MonoBehaviour
     public Material coneMat;
 
 
+    public void ReceiveCallback(IAsyncResult AsyncCall)
+    {
 
+
+        Socket listener = (Socket)AsyncCall.AsyncState;
+        Socket client = listener.EndAccept(AsyncCall);
+        using (NetworkStream s = new NetworkStream(client))
+        {
+            BinaryReader reader = new BinaryReader(s);
+
+            FunctionParams funcParams = new FunctionParams(new Color(reader.ReadInt32()/255f, reader.ReadInt32()/255f, reader.ReadInt32()/255f), reader.ReadInt32(),
+                reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
+
+            Weistrasse.ParamsUpdate(funcParams);
+
+            BinaryWriter writer = new BinaryWriter(s);
+            writer.Write("Message accepted");
+            writer.Flush();
+            s.Close();
+            client.Close();
+            reader.Close();
+            writer.Close();
+            listener.BeginAccept(new AsyncCallback(ReceiveCallback), listener);
+        }
+
+
+
+        // После того как завершили соединение, говорим ОС что мы готовы принять новое
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        max_counter = (int)(T / period);
+        IPAddress localAddress = IPAddress.Parse("127.0.0.1");
 
-        //FunctionParams func_params = new FunctionParams(1.4, 10, 3.3, 2.5, 0.005);
+        Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        // string json_params = JsonUtility.ToJson(func_params);
-        //using (var tw = new StreamWriter("func_params.json"))
-        // {
-        //      tw.WriteLine(json_params.ToString());
-        //     tw.Close();
-        //  }
-        FunctionParams func_params;
-        try
-        {
-            string json_text = File.ReadAllText("func_params.json");
-            func_params = JsonUtility.FromJson<FunctionParams>(json_text);
-        }
-        catch (Exception err)
-        {
-            func_params = new FunctionParams(1.4, 10, 3.3, 2.5, 0.005);
-            Debug.Log("Fail to read params, loading default");
+        IPEndPoint ipEndpoint = new IPEndPoint(localAddress, 2200);
 
-        }
+        listenSocket.Bind(ipEndpoint);
 
-        Weistrasse ws = new Weistrasse();
-        y = ws.CreateSignal(max_counter, 0.05,func_params.D, func_params.N, func_params.sigma, func_params.b, func_params.s);
-
-// SceneManager.LoadScene("2D Tetris");
-
-    }
+        listenSocket.Listen(1);
+        listenSocket.BeginAccept(new AsyncCallback(ReceiveCallback), listenSocket);
+   }
 
     // Update is called once per frame
     void Update()
@@ -82,13 +75,11 @@ public class fractalFlicking : MonoBehaviour
 
         if (Time.time > nextActionTime)
         {
-            nextActionTime = Time.time + period;
+            nextActionTime = Time.time + Weistrasse.get_dt;
 
-            if (counter > y.Length)
-                counter = 0;
 
-            float coef = (float)y[counter++];
-            coneMat.SetColor("_EmissionColor", new Color(coef, coef, coef, 1));
+            float coef = (float)Weistrasse.NextValue();
+            coneMat.SetColor("_EmissionColor", new Color(coef*Weistrasse.Color.r, coef * Weistrasse.Color.g , coef * Weistrasse.Color.b , 1));
         }
     }
 }

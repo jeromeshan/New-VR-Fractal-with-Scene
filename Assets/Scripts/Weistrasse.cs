@@ -3,13 +3,84 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets
 {
-    public class Weistrasse
+    public class FunctionParams
     {
-        Random rnd = new Random();
+        public Color color;
+        public int T;
+        public double dt;
+        public double D;
+        public int N;
+        public double sigma;
+        public double b;
+        public double s;
 
+        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s)
+        {
+            this.color = color;
+            T = t;
+            this.dt = dt;
+            D = d;
+            N = n;
+            this.sigma = sigma;
+            this.b = b;
+            this.s = s;
+        }
+    }
+
+    public static class Weistrasse
+    {
+        static System.Random rnd = new System.Random();
+        static Color color ;
+        static int T = 20;
+        static int L;
+        static double dt = 0.05;
+        static double D = 1.4;
+        static int N = 10;
+        static double sigma = 3.3;
+        static double b = 2.5;
+        static double s = 0.005;
+        static int counter=0;
+
+        static public double[] signal;
+
+        public static float get_dt { get => (float) dt; }
+        public static Color Color { get => color; }
+
+        static Weistrasse()
+        {
+            L = (int)(T / dt);
+            signal = CreateSignal();
+            color = new Color(1, 1, 1, 1);
+        }
+
+        public static void ParamsUpdate(FunctionParams funcParams)
+        {
+            T = funcParams.T;
+            dt = funcParams.dt;
+            L = (int)(T / dt);
+            D = funcParams.D;
+            N = funcParams.N;
+            sigma = funcParams.sigma;
+            b = funcParams.b;
+            s = funcParams.s;
+            color = funcParams.color;
+
+            signal = CreateSignal();
+        }
+
+        public static double NextValue()
+        {
+            if (counter >= L)
+            {
+                counter = 0;
+            }
+            double[] y = signal;
+            return signal[counter++];
+        }
 
         static double[] linspace(double StartValue, double EndValue, int numberofpoints)
         {
@@ -46,7 +117,7 @@ namespace Assets
         /// <param name="s">Some phi</param>
         /// <param name="L">Number of points</param>
         /// <param name="dt">Points per second</param>
-        private Tuple<double[], double[]> weistrs(int L, double dt, double D = 1.4, int N = 10, double sigma = 3.3, double b = 2.5, double s = 0.005)
+        private static  double[] weistrs()
         {
 
             double[] x = linspace(0, L * dt, L);
@@ -73,10 +144,10 @@ namespace Assets
                 y[i] *= h4;
             }
 
-            return new Tuple<double[], double[]>(x, y);
+            return y;
         }
 
-        private double[] normSignal(double[] y, int L)
+        private static double[] normSignal(double[] y)
         {
             double[] z = new double[L];
 
@@ -98,17 +169,16 @@ namespace Assets
 
                 }
             }
-
             return z;
         }
 
-        public double[] CreateSignal(int L, double dt, double D = 1.4, int N = 10, double sigma = 3.3, double b = 2.5, double s = 0.005)
+        public static double[] CreateSignal()
         {
 
-            double[] y = weistrs(L, dt,D,N,sigma,b,s).Item2;
-
-
-            return normSignal(y, L);
+            double[] y = weistrs();
+            counter = 0;
+        
+            return normSignal(y);
         }
     }
 }
