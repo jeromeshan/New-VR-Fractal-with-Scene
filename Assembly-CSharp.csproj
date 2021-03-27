@@ -62,15 +62,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ColorChanger.cs" />
-    <Compile Include="Assets\Scripts\ContinuousMovement.cs" />
-    <Compile Include="Assets\Scripts\HandButton.cs" />
-    <Compile Include="Assets\Scripts\HandHider.cs" />
-    <Compile Include="Assets\Scripts\LocomotionController.cs" />
-    <Compile Include="Assets\Scripts\Weistrasse.cs" />
-    <Compile Include="Assets\Scripts\fractalFlicking.cs" />
-    <Compile Include="Assets\Tetris\TetrisScripts\SpawnBlock.cs" />
-    <Compile Include="Assets\Tetris\TetrisScripts\TetrisBlock.cs" />
+    <Compile Include="Assets\Scripts\ButtonScripts\ColorChanger.cs" />
+    <Compile Include="Assets\Scripts\ButtonScripts\HandButton.cs" />
+    <Compile Include="Assets\Scripts\ButtonScripts\HandHider.cs" />
+    <Compile Include="Assets\Scripts\DrawLineManager.cs" />
+    <Compile Include="Assets\Scripts\FractalScripts\Weistrasse.cs" />
+    <Compile Include="Assets\Scripts\FractalScripts\fractalFlicking.cs" />
+    <Compile Include="Assets\Scripts\LocomotionScripts\ContinuousMovement.cs" />
+    <Compile Include="Assets\Scripts\LocomotionScripts\LocomotionController.cs" />
+    <Compile Include="Assets\Scripts\MeshLineRender.cs" />
+    <Compile Include="Assets\Scripts\TetrisScripts\SpawnBlock.cs" />
+    <Compile Include="Assets\Scripts\TetrisScripts\TetrisBlock.cs" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Readme.txt" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Shaders\SimpleWater.shader" />
     <Reference Include="UnityEngine">
