@@ -8,16 +8,16 @@ public class DrawLineManager : MonoBehaviour
 
     public Material lineMat;
     public XRNode LeftInputSource;
-    public XRNode RightInputSource;
+    //public XRNode RightInputSource;
     public GameObject leftHand;
-    public GameObject rightHand;
+    //public GameObject rightHand;
 
     public float activateThreshold = 0.1f;
 
 
-    MeshLineRenderer leftCurrLine, rightCurrLine;
+    MeshLineRenderer leftCurrLine;//, rightCurrLine;
 
-    bool leftState, rightState;
+    bool leftState;//, rightState;
 
     int leftClicks=0;
     // Start is called before the first frame update
@@ -30,11 +30,11 @@ public class DrawLineManager : MonoBehaviour
     void Update()
     {
         InputDevice left = InputDevices.GetDeviceAtXRNode(LeftInputSource);
-        InputDevice right = InputDevices.GetDeviceAtXRNode(RightInputSource);
-        float leftValue, rightValue;
+        //InputDevice right = InputDevices.GetDeviceAtXRNode(RightInputSource);
+        float leftValue;//, rightValue;
 
         left.TryGetFeatureValue(CommonUsages.trigger, out leftValue);
-        right.TryGetFeatureValue(CommonUsages.trigger, out rightValue);
+        //right.TryGetFeatureValue(CommonUsages.trigger, out rightValue);
 
         if (leftValue > activateThreshold)
         {
@@ -43,6 +43,7 @@ public class DrawLineManager : MonoBehaviour
                 GameObject go = new GameObject();
                 go.AddComponent<MeshFilter>();
                 go.AddComponent<MeshRenderer>();
+                go.tag = "DrawedLine";
                 leftCurrLine = go.AddComponent<MeshLineRenderer>();
                 leftCurrLine.setWidth(.1f);
                 leftCurrLine.lmat = lineMat;
@@ -60,16 +61,14 @@ public class DrawLineManager : MonoBehaviour
             //leftCurrLine.SetPosition(leftClicks, pos);
             leftCurrLine.AddPoint(pos);
             leftClicks++;
-
-
-
-
         }
         else
         {
             leftState = false;
         }
 
-       
+
+
+
     }
 }

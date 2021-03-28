@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\MeshLineRender.cs" />
     <Compile Include="Assets\Scripts\TetrisScripts\SpawnBlock.cs" />
     <Compile Include="Assets\Scripts\TetrisScripts\TetrisBlock.cs" />
+    <Compile Include="Assets\Scripts\lineEraser.cs" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Readme.txt" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Shaders\SimpleWater.shader" />
     <Reference Include="UnityEngine">

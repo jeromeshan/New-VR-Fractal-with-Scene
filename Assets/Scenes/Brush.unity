@@ -831,9 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineMat: {fileID: 2100000, guid: a3f089f9150c7eb4abfc9ac070219738, type: 2}
   LeftInputSource: 4
-  RightInputSource: 5
   leftHand: {fileID: 42024067}
-  rightHand: {fileID: 931509546}
   activateThreshold: 0.1
 --- !u!1 &779196207
 GameObject:
@@ -12527,12 +12525,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &931509546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 12058974d1fdae14c93d2ae460450ca8,
-    type: 3}
-  m_PrefabInstance: {fileID: 165892166}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1213532462
 GameObject:
   m_ObjectHideFlags: 0
@@ -24289,6 +24281,7 @@ GameObject:
   - component: {fileID: 1502353120}
   - component: {fileID: 1502353119}
   - component: {fileID: 1502353118}
+  - component: {fileID: 1502353122}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -24420,6 +24413,20 @@ MonoBehaviour:
   m_MoveObjectIn: 14
   m_MoveObjectOut: 15
   m_PoseProvider: {fileID: 0}
+--- !u!114 &1502353122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502353116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ea44f7b3cdf734eb09aa60bdee43d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightInputSource: 5
+  activateThreshold: 0.1
 --- !u!1 &1574373966
 GameObject:
   m_ObjectHideFlags: 0
