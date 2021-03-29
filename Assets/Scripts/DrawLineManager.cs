@@ -43,8 +43,11 @@ public class DrawLineManager : MonoBehaviour
                 GameObject go = new GameObject();
                 go.AddComponent<MeshFilter>();
                 go.AddComponent<MeshRenderer>();
+                go.AddComponent<MeshCollider>();
+                go.GetComponent<MeshCollider>().isTrigger = true;
                 go.tag = "DrawedLine";
                 leftCurrLine = go.AddComponent<MeshLineRenderer>();
+
                 leftCurrLine.setWidth(.1f);
                 leftCurrLine.lmat = lineMat;
 

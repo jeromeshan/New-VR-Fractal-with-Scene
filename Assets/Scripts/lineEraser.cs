@@ -22,17 +22,22 @@ public class lineEraser : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+
+
+
+    void OnTriggerEnter(Collider collider)
     {
         InputDevice right = InputDevices.GetDeviceAtXRNode(RightInputSource);
         float rightValue;
 
         right.TryGetFeatureValue(CommonUsages.trigger, out rightValue);
 
-        
-        if ((collision.collider.tag== "DrawedLine")&& (rightValue > activateThreshold))
+        Debug.Log("Hit smthg");
+        Debug.Log(collider.tag);
+
+        if ((collider.tag== "DrawedLine")&& (rightValue > activateThreshold))
         {
-            Destroy(collision.collider);
+            Destroy(collider);
         }
     }
 }

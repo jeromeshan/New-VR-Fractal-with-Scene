@@ -36,7 +36,13 @@ public class ContinuousMovement : MonoBehaviour
     {
         CapsuleFollowHeadset();
         Quaternion headYaw = Quaternion.Euler(0, rig.cameraGameObject.transform.eulerAngles.y, 0);
-        Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
+        float x = 0;
+        if (Mathf.Abs(inputAxis.x) > 0.3)
+            x = inputAxis.x;
+        float y = 0;
+        if (Mathf.Abs(inputAxis.y) > 0.3)
+            y = inputAxis.y;
+        Vector3 direction = headYaw * new Vector3(x, 0, y);
 
         character.Move(direction * Time.fixedDeltaTime * speed);
 
