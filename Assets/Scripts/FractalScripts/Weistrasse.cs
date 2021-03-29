@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -17,8 +20,9 @@ namespace Assets
         public double sigma;
         public double b;
         public double s;
+        public int mode;
 
-        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s)
+        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s,int mode)
         {
             this.color = color;
             T = t;
@@ -28,6 +32,7 @@ namespace Assets
             this.sigma = sigma;
             this.b = b;
             this.s = s;
+            this.mode = mode;
         }
     }
 
@@ -43,6 +48,7 @@ namespace Assets
         static double sigma = 3.3;
         static double b = 2.5;
         static double s = 0.005;
+        public static int mode = 0;
         static int counter=0;
 
         static public double[] signal;
@@ -55,6 +61,52 @@ namespace Assets
             L = (int)(T / dt);
             signal = CreateSignal();
             color = new Color(1, 1, 1, 1);
+
+
+            IPAddress localAddress = IPAddress.Parse("127.0.0.1");
+
+            Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            IPEndPoint ipEndpoint = new IPEndPoint(localAddress, 2200);
+
+            listenSocket.Bind(ipEndpoint);
+
+            listenSocket.Listen(1);
+            listenSocket.BeginAccept(new AsyncCallback(ReceiveCallback), listenSocket);
+        }
+
+        public static void ReceiveCallback(IAsyncResult AsyncCall)
+        {
+
+
+            Socket listener = (Socket)AsyncCall.AsyncState;
+            Socket client = listener.EndAccept(AsyncCall);
+            using (NetworkStream s = new NetworkStream(client))
+            {
+                BinaryReader reader = new BinaryReader(s);
+
+                FunctionParams funcParams = new FunctionParams(new Color(reader.ReadInt32() / 255f, reader.ReadInt32() / 255f, reader.ReadInt32() / 255f), reader.ReadInt32(),
+                    reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32());
+
+
+                Weistrasse.ParamsUpdate(funcParams);
+
+                BinaryWriter writer = new BinaryWriter(s);
+                writer.Write("Message accepted");
+                writer.Flush();
+                s.Close();
+                client.Close();
+                reader.Close();
+                writer.Close();
+
+
+                listener.BeginAccept(new AsyncCallback(ReceiveCallback), listener);
+            }
+
+
+
+            // После того как завершили соединение, говорим ОС что мы готовы принять новое
+
         }
 
         public static void ParamsUpdate(FunctionParams funcParams)
@@ -68,6 +120,7 @@ namespace Assets
             b = funcParams.b;
             s = funcParams.s;
             color = funcParams.color;
+            mode = funcParams.mode;
 
             signal = CreateSignal();
         }
