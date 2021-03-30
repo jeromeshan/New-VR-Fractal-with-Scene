@@ -11,6 +11,7 @@ public class DrawLineManager : MonoBehaviour
     //public XRNode RightInputSource;
     public GameObject leftHand;
     public GameObject Sphere;
+
     //public GameObject rightHand;
 
     public float activateThreshold = 0.1f;
@@ -65,8 +66,15 @@ public class DrawLineManager : MonoBehaviour
             ////leftCurrLine.SetPosition(leftClicks, pos);
             //leftCurrLine.AddPoint(pos);
             //leftClicks++;
+
+            if (!leftState)
+            {
+                
+            }
+            leftState = true;
             Vector3 pos = leftHand.transform.position;
             GameObject go = GameObject.Instantiate(Sphere);
+            go.tag = "DrawedLine";
             go.GetComponent<Transform>().position = pos;
 
         }
