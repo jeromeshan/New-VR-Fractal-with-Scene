@@ -62,19 +62,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BrushColorChange.cs" />
+    <Compile Include="Assets\Scripts\BrushScripts\BrushColorChange.cs" />
+    <Compile Include="Assets\Scripts\BrushScripts\DrawLineManager.cs" />
+    <Compile Include="Assets\Scripts\BrushScripts\MeshLineRender.cs" />
+    <Compile Include="Assets\Scripts\BrushScripts\lineEraser.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\ColorChanger.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\HandButton.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\HandHider.cs" />
-    <Compile Include="Assets\Scripts\DrawLineManager.cs" />
     <Compile Include="Assets\Scripts\FractalScripts\Weistrasse.cs" />
     <Compile Include="Assets\Scripts\FractalScripts\fractalFlicking.cs" />
     <Compile Include="Assets\Scripts\LocomotionScripts\ContinuousMovement.cs" />
     <Compile Include="Assets\Scripts\LocomotionScripts\LocomotionController.cs" />
-    <Compile Include="Assets\Scripts\MeshLineRender.cs" />
     <Compile Include="Assets\Scripts\TetrisScripts\SpawnBlock.cs" />
     <Compile Include="Assets\Scripts\TetrisScripts\TetrisBlock.cs" />
-    <Compile Include="Assets\Scripts\lineEraser.cs" />
+    <Compile Include="Assets\SimonManager.cs" />
+    <Compile Include="Assets\SimonSaysButton.cs" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Readme.txt" />
     <None Include="Assets\ExternalAssets\SimpleLowPolyNature\Shaders\SimpleWater.shader" />
     <Reference Include="UnityEngine">
