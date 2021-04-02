@@ -9,7 +9,6 @@ public class SimonManager : XRBaseInteractable
     public UnityEvent OnPress = null;
     public UnityEvent OnFail = null;
     public GameObject[] buttons = new GameObject[6];
-    public Material selectedMat;
 
     public int currLevel = 0;
     public int curPos = 0;
@@ -17,7 +16,7 @@ public class SimonManager : XRBaseInteractable
     private float yMax = 0.0f;
     private bool previousPress = false;
 
-    int[][] Levels = new int[10][];
+    public int[][] Levels = new int[10][];
     private float previousHandHeight = 0.0f;
     private XRBaseInteractor hoverInteractor = null;
 
@@ -54,12 +53,12 @@ public class SimonManager : XRBaseInteractable
         System.Random rnd = new System.Random();
         for (int i = 0; i < 10; i++)
         {
-            Levels[i] = new int[i];
-            for (int j = 0; j < i; j++)
+            Levels[i] = new int[i+1];
+            for (int j = 0; j < i+1; j++)
             {
                 Levels[i][j] = rnd.Next(6);
             }
-            
+            Debug.Log(Levels[i]);
         }
 
         SetMinMax();
@@ -112,14 +111,44 @@ public class SimonManager : XRBaseInteractable
         {
             OnPress.Invoke();
 
-            foreach (int i in Levels[currLevel]){
-                buttons[i].GetComponent<SimonSaysButton>().Pick();
-            }
+            StartCoroutine(ColourPick());
+
             curPos = 0;
         }
         previousPress = inPosition;
     }
 
+    private IEnumerator ColourPick()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (var btn in buttons)
+        {
+            btn.GetComponent<SimonSaysButton>().SetSelectMat();
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        foreach (var btn in buttons)
+        {
+            btn.GetComponent<SimonSaysButton>().SetOrigtMat();
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (int i in Levels[currLevel])
+        {
+            buttons[i].GetComponent<SimonSaysButton>().SetSelectMat();
+            yield return new WaitForSeconds(0.6f);
+            buttons[i].GetComponent<SimonSaysButton>().SetOrigtMat();
+            yield return new WaitForSeconds(0.3f);
+
+
+        }
+        // doing something
+        // waits 5 seconds
+
+        // do something else
+
+    }
     public void Move(int idx)
     {
         if ((idx == Levels[currLevel][curPos]) && (curPos+1==Levels[currLevel].Length))
@@ -128,10 +157,8 @@ public class SimonManager : XRBaseInteractable
                 currLevel++;
 
             curPos = 0;
-            foreach (int i in Levels[currLevel])
-            {
-                buttons[i].GetComponent<SimonSaysButton>().Pick();
-            }
+            StartCoroutine(ColourPick());
+
             return;
         }
 
@@ -143,10 +170,8 @@ public class SimonManager : XRBaseInteractable
 
         OnFail.Invoke();
         curPos = 0;
-        foreach (int i in Levels[currLevel])
-        {
-            buttons[i].GetComponent<SimonSaysButton>().Pick();
-        }
+        StartCoroutine(ColourPick());
+
 
 
     }

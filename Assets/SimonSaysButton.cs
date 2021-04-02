@@ -135,20 +135,29 @@ public class SimonSaysButton : XRBaseInteractable
         meshRenderer.material = originalMaterial;
     }
 
-    private IEnumerator ColourPick()
+    public void SetSelectMat()
     {
-        // doing something
         meshRenderer.material = selectMaterial;
-        // waits 5 seconds
-        yield return new WaitForSeconds(0.2f);
-
-        // do something else
-        meshRenderer.material = originalMaterial;
-
     }
 
-    public void Pick()
+    public void SetOrigtMat()
     {
-        StartCoroutine(ColourPick());
+        meshRenderer.material = originalMaterial;
     }
+    //private IEnumerator ColourPick()
+    //{
+    //    // doing something
+    //    meshRenderer.material = selectMaterial;
+    //    // waits 5 seconds
+    //    yield return new WaitForSeconds(0.3f);
+
+    //    // do something else
+    //    meshRenderer.material = originalMaterial;
+
+    //}
+
+    //public void Pick()
+    //{
+    //    StartCoroutine(ColourPick());
+    //}
 }
