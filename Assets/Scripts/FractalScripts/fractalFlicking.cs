@@ -64,7 +64,10 @@ public class fractalFlicking : MonoBehaviour
                 planeMesh.enabled = false;
             }
 
+            var pos = pipe.GetComponent<Transform>().localPosition;
 
+            if(pipe.GetComponent<Transform>().localPosition.z!= (float)Weistrasse.DiscDist)
+                pipe.GetComponent<Transform>().localPosition = new Vector3(pos.x,pos.y,(float)Weistrasse.DiscDist);
         }
     }
 }

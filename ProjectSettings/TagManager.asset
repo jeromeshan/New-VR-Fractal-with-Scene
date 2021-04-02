@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TeleportBeam
   - DrawedLine
+  - Tetraminoes
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,7 @@ public class TetrisBlock : MonoBehaviour
     public static int width = 10;
 
     public GameObject gameOverText;
-    private static Transform[,] grid = new Transform[width, height];
+    public static Transform[,] grid = new Transform[width, height];
 
     private Vector2 inputAxis;
 
@@ -89,7 +89,9 @@ public class TetrisBlock : MonoBehaviour
                     FindObjectOfType<SpawnBlock>().NewTetraminoes();
                 else
                 {
-                    FindObjectOfType<UnityEngine.UI.Text>().text = "Game Over" ;
+                    //FindObjectOfType<UnityEngine.UI.Text>().text = "Game Over" ;
+
+
                 }
             }
             previousTime = Time.time;

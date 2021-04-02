@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 2734196449855126532}
   m_Layer: 0
   m_Name: Z shape
-  m_TagString: Untagged
+  m_TagString: Tetraminoes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

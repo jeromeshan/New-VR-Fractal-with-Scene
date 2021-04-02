@@ -21,8 +21,9 @@ namespace Assets
         public double b;
         public double s;
         public int mode;
+        public double discDist;
 
-        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s,int mode)
+        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s,int mode, double discDist)
         {
             this.color = color;
             T = t;
@@ -33,6 +34,7 @@ namespace Assets
             this.b = b;
             this.s = s;
             this.mode = mode;
+            this.discDist = discDist;
         }
     }
 
@@ -50,11 +52,14 @@ namespace Assets
         static double s = 0.005;
         public static int mode = 0;
         static int counter=0;
+        static double discDist=0.08;
+
 
         static public double[] signal;
 
         public static float get_dt { get => (float) dt; }
         public static Color Color { get => color; }
+        public static double DiscDist { get => discDist; }
 
         static Weistrasse()
         {
@@ -86,7 +91,7 @@ namespace Assets
                 BinaryReader reader = new BinaryReader(s);
 
                 FunctionParams funcParams = new FunctionParams(new Color(reader.ReadInt32() / 255f, reader.ReadInt32() / 255f, reader.ReadInt32() / 255f), reader.ReadInt32(),
-                    reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32());
+                    reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(),reader.ReadDouble());
 
 
                 Weistrasse.ParamsUpdate(funcParams);
@@ -121,6 +126,7 @@ namespace Assets
             s = funcParams.s;
             color = funcParams.color;
             mode = funcParams.mode;
+            discDist = funcParams.discDist;
 
             signal = CreateSignal();
         }
