@@ -2,10 +2,10 @@
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class RessetButton : XRBaseInteractable
+public class ResetButton : XRBaseInteractable
 {
     public UnityEvent OnPress = null;
-
+    public string tag = null;
     private float yMin = 0.0f;
     private float yMax = 0.0f;
     private bool previousPress = false;
@@ -94,11 +94,16 @@ public class RessetButton : XRBaseInteractable
         {
             OnPress.Invoke();
 
-            TetrisBlock.grid = new Transform[TetrisBlock.width, TetrisBlock.height];
-            GameObject[] shapes = GameObject.FindGameObjectsWithTag("Tetraminoes");
+           
+            GameObject[] shapes = GameObject.FindGameObjectsWithTag(tag);
             foreach (GameObject shape in shapes)
                 Destroy(shape);
-            FindObjectOfType<SpawnBlock>().NewTetraminoes();
+
+            if (tag == "Tetraminoes")
+            {
+                TetrisBlock.grid = new Transform[TetrisBlock.width, TetrisBlock.height];
+                FindObjectOfType<SpawnBlock>().NewTetraminoes();
+            }
         }
         previousPress = inPosition;
     }
