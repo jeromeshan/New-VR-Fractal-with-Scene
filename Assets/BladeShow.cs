@@ -11,7 +11,6 @@ public class BladeShow : MonoBehaviour
     public GameObject leftHand;
     public GameObject blade;
 
-
     // Start is called before the first frame update
     void Start()
     {
