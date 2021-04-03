@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class Blade : MonoBehaviour
+public class BladeShow : MonoBehaviour
 {
-
+    
     public XRNode LeftInputSource;
     public float activateThreshold = 0.1f;
+    public GameObject leftHand;
+    public GameObject blade;
 
-    bool isCutting = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -24,21 +31,14 @@ public class Blade : MonoBehaviour
         if (leftValue > activateThreshold)
         {
 
-            StartCutting();
+            blade.SetActive(true);
+            leftHand.SetActive(false);
         }
         else
         {
-            StopCutting();
+
+            blade.SetActive(false);
+            leftHand.SetActive(true);
         }
-    }
-
-     void StopCutting()
-    {
-        isCutting = false;
-    }
-
-    void StartCutting()
-    {
-        isCutting = false;
     }
 }
