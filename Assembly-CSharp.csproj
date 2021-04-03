@@ -64,7 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ResetButton.cs" />
+    <Compile Include="Assets\Blade.cs" />
     <Compile Include="Assets\Scripts\BrushScripts\BrushColorChange.cs" />
     <Compile Include="Assets\Scripts\BrushScripts\DrawLineManager.cs" />
     <Compile Include="Assets\Scripts\BrushScripts\MeshLineRender.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\FractalScripts\fractalFlicking.cs" />
     <Compile Include="Assets\Scripts\LocomotionScripts\ContinuousMovement.cs" />
     <Compile Include="Assets\Scripts\LocomotionScripts\LocomotionController.cs" />
+    <Compile Include="Assets\Scripts\ResetButton.cs" />
     <Compile Include="Assets\Scripts\SimonManager.cs" />
     <Compile Include="Assets\Scripts\SimonSaysButton.cs" />
     <Compile Include="Assets\Scripts\TetrisRessetButton.cs" />

@@ -29,7 +29,7 @@ public class DrawLineManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         InputDevice left = InputDevices.GetDeviceAtXRNode(LeftInputSource);
         //InputDevice right = InputDevices.GetDeviceAtXRNode(RightInputSource);
