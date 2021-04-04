@@ -155,6 +155,10 @@ public class SimonManager : XRBaseInteractable
         {
             if (currLevel < 10)
                 currLevel++;
+            else
+            {
+                currLevel = 0;
+            }
 
             curPos = 0;
             StartCoroutine(ColourPick());
