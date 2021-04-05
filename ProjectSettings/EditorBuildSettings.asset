@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SimonSays.unity
     guid: 9f9dd28ba3320bc41aad70c43d9e786c
+  - enabled: 1
+    path: Assets/Scenes/FruitSlice.unity
+    guid: 13ccbf8fa8e04324c804e62c30472dd5
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: b93a213a1901b4c4f9cb0a769268653a,
       type: 2}
