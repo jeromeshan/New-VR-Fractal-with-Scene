@@ -18,10 +18,12 @@ public class Fruit : MonoBehaviour
     {
         if (collider.tag == "Blade")
         {
-            Vector3 direction = (collider.transform.position - transform.position).normalized;
+            RaycastHit hit;
+            Physics.Raycast(transform.position, transform.forward, out hit);
+            Vector3 direction = (hit.point - transform.position).normalized;
             Quaternion rotation= Quaternion.LookRotation(direction);
             GameObject slicedFruit = Instantiate(slicedFruitPrefab,transform.position,rotation);
-            Destroy(slicedFruit, 5f);
+            Destroy(slicedFruit, 15f);
             Destroy(gameObject);
         }
     }
