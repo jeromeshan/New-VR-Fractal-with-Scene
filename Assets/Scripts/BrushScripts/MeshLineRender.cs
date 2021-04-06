@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 
 /*
 class Point {
@@ -193,4 +192,3 @@ public class MeshLineRenderer : MonoBehaviour
         return nvs;
     }
 }
-
