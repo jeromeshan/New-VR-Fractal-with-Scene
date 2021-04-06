@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5090410538856081849}
-  - component: {fileID: 5090410538856081854}
   - component: {fileID: 5090410538856081855}
   - component: {fileID: 5090410538856081848}
+  - component: {fileID: 5396730298550276050}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5090410538856081854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5090410538856081850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3148da4aa082dc74c85146b138f0a717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slicedFruitPrefab: {fileID: 4457856998885233278, guid: 18864cb0a0153834abbfe06226b22621,
-    type: 3}
-  upForse: 5
 --- !u!54 &5090410538856081855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,6 +63,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5396730298550276050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090410538856081850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039829c549a592d47b260e634623af12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedFruitPrefab: {fileID: 4457856998885233278, guid: 18864cb0a0153834abbfe06226b22621,
+    type: 3}
+  upForse: 5
 --- !u!1001 &5090410539070164956
 PrefabInstance:
   m_ObjectHideFlags: 0

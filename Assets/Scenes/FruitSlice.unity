@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -24328,6 +24328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 930433030}
   - component: {fileID: 930433029}
+  - component: {fileID: 930433031}
   m_Layer: 0
   m_Name: FruitSpawner
   m_TagString: Untagged
@@ -24376,6 +24377,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &930433031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930433028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc3cf8d01e6d144ea9bc8d5715aa772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitPrefab: {fileID: 5090410538856081850, guid: b206cfd743f341949bf3a7053cdad2b7,
+    type: 3}
+  spawnPoints:
+  - {fileID: 819056233}
+  - {fileID: 1518100545}
+  - {fileID: 90992726}
+  - {fileID: 290646652}
+  - {fileID: 978011469}
+  minDelay: 0.1
+  maxDelay: 1
 --- !u!1 &978011468
 GameObject:
   m_ObjectHideFlags: 0
@@ -24412,7 +24435,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh72688
+  m_Name: pb_Mesh17708
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25346,6 +25369,8 @@ GameObject:
   - component: {fileID: 1591507216}
   - component: {fileID: 1591507215}
   - component: {fileID: 1591507221}
+  - component: {fileID: 1591507223}
+  - component: {fileID: 1591507222}
   m_Layer: 0
   m_Name: XR Rig
   m_TagString: Player
@@ -25462,13 +25487,43 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   aditionalHeight: 0.02
+--- !u!114 &1591507222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591507214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee28d0be5bac9a54696f48194aca0b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftInputSource: 0
+  activateThreshold: 0.1
+--- !u!114 &1591507223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591507214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c1b1d9b7d3d5e49aaafd996f0f04bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftInputSource: 4
+  activateThreshold: 0.1
+  leftHand: {fileID: 200389325}
+  blade: {fileID: 1460318690}
 --- !u!43 &1593460313
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh72622
+  m_Name: pb_Mesh17642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

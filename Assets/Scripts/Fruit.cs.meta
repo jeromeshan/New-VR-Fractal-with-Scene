@@ -3,7 +3,9 @@ guid: 039829c549a592d47b260e634623af12
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - slicedFruitPrefab: {fileID: 4457856998885233278, guid: 18864cb0a0153834abbfe06226b22621,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
