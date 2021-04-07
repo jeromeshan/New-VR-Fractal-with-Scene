@@ -78,7 +78,10 @@ public class DrawLineManager : MonoBehaviour
            go.GetComponent<MeshRenderer>().material = Sphere.GetComponent<MeshRenderer>().material;
            go.tag = "DrawedLine";
            go.transform.position = (pos + previousPos) / 2;
-           go.transform.localScale = new Vector3(0.03f,  Vector3.Distance(previousPos, pos)*0.8f,0.03f);
+            float scaleCoef = 0.01f;
+            if (Vector3.Distance(previousPos, pos) > scaleCoef)
+                scaleCoef = Vector3.Distance(previousPos, pos) * 0.8f;
+           go.transform.localScale = new Vector3(0.03f,  scaleCoef,0.03f);
            go.transform.LookAt(pos);
            go.transform.Rotate(90.0f, 0.0f, 0.0f, Space.Self);
 

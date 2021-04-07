@@ -22,8 +22,9 @@ namespace Assets
         public double s;
         public int mode;
         public double discDist;
+        public float alpha;
 
-        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s,int mode, double discDist)
+        public FunctionParams(Color color, int t, double dt, double d, int n, double sigma, double b, double s,int mode, double discDist,float alpha)
         {
             this.color = color;
             T = t;
@@ -35,6 +36,7 @@ namespace Assets
             this.s = s;
             this.mode = mode;
             this.discDist = discDist;
+            this.alpha = alpha;
         }
     }
 
@@ -53,6 +55,7 @@ namespace Assets
         public static int mode = 0;
         static int counter=0;
         static double discDist=0.08;
+        static float alpha = 0.5f;
 
 
         static public double[] signal;
@@ -60,6 +63,8 @@ namespace Assets
         public static float get_dt { get => (float) dt; }
         public static Color Color { get => color; }
         public static double DiscDist { get => discDist; }
+
+        public static float Alpha { get => alpha; }
 
         static Weistrasse()
         {
@@ -91,7 +96,7 @@ namespace Assets
                 BinaryReader reader = new BinaryReader(s);
 
                 FunctionParams funcParams = new FunctionParams(new Color(reader.ReadInt32() / 255f, reader.ReadInt32() / 255f, reader.ReadInt32() / 255f), reader.ReadInt32(),
-                    reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(),reader.ReadDouble());
+                    reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble(), reader.ReadInt32(),reader.ReadDouble(), reader.ReadInt32() / 255f);
 
 
                 Weistrasse.ParamsUpdate(funcParams);
@@ -127,6 +132,7 @@ namespace Assets
             color = funcParams.color;
             mode = funcParams.mode;
             discDist = funcParams.discDist;
+            alpha = funcParams.alpha;
 
             signal = CreateSignal();
         }

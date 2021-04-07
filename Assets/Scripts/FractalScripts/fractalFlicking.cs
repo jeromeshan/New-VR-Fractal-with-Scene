@@ -15,22 +15,27 @@ public class fractalFlicking : MonoBehaviour
 
     public GameObject plane;
     public GameObject pipe;
+    public GameObject curtain;
+
     int mode = 0;
     MeshRenderer pipeMesh;
     MeshRenderer planeMesh;
+    MeshRenderer curtainMesh;
+
     private float nextActionTime = 0.0f;
 
-    public Material coneMat;
+    public Material solidMat;
+    public Material curtainMat;
 
 
- 
+
 
     // Start is called before the first frame update
     void Start()
     {
         pipeMesh = pipe.GetComponentInChildren<MeshRenderer>();
         planeMesh = plane.GetComponentInChildren<MeshRenderer>();
-
+        curtainMesh = curtain.GetComponentInChildren<MeshRenderer>();
 
 
    }
@@ -46,28 +51,42 @@ public class fractalFlicking : MonoBehaviour
 
 
             float coef = (float)Weistrasse.NextValue();
-            coneMat.SetColor("_EmissionColor", new Color(coef*Weistrasse.Color.r, coef * Weistrasse.Color.g , coef * Weistrasse.Color.b , 1));
+            solidMat.SetColor("_EmissionColor", new Color(coef*Weistrasse.Color.r, coef * Weistrasse.Color.g , coef * Weistrasse.Color.b , 1));
             int mode = Weistrasse.mode;
-            if (mode == 0)
+            switch (mode)
             {
-                pipeMesh.enabled = true;
-                planeMesh.enabled = false;
+                case 0:
+                    pipeMesh.enabled = true;
+                    planeMesh.enabled = false;
+                    curtainMesh.enabled = false;
+                    break;
+                case 1:
+                    pipeMesh.enabled = false;
+                    planeMesh.enabled = true;
+                    curtainMesh.enabled = false;
+                    break;
+                case 2:
+                    pipeMesh.enabled = false;
+                    planeMesh.enabled = false;
+                    curtainMesh.enabled = true;
+                    break;
+                case 3:
+                    pipeMesh.enabled = false;
+                    planeMesh.enabled = false;
+                    curtainMesh.enabled = false;
+                    break;
             }
-            if (mode == 1)
-            {
-                pipeMesh.enabled = false;
-                planeMesh.enabled = true;
-            }
-            if (mode == 2)
-            {
-                pipeMesh.enabled = false;
-                planeMesh.enabled = false;
-            }
+            
 
             var pos = pipe.GetComponent<Transform>().localPosition;
 
             if(pipe.GetComponent<Transform>().localPosition.z!= (float)Weistrasse.DiscDist)
                 pipe.GetComponent<Transform>().localPosition = new Vector3(pos.x,pos.y,(float)Weistrasse.DiscDist);
+
+            if (curtainMat.color.a != Weistrasse.Alpha)
+            {
+                curtainMat.color(new Color(0,0,0, Weistrasse.Alpha);
+            }
         }
     }
 }
