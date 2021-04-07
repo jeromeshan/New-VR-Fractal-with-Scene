@@ -14580,7 +14580,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 819398746}
   pipe: {fileID: 2106852046}
-  coneMat: {fileID: 2100000, guid: af2ef634e9ae6a243974a5b059a3a94f, type: 2}
+  curtain: {fileID: 1296649349}
+  solidMat: {fileID: 2100000, guid: af2ef634e9ae6a243974a5b059a3a94f, type: 2}
+  curtainMat: {fileID: 2100000, guid: 58b4dd8dad6f30b4cbdb35f86e8b0cc8, type: 2}
 --- !u!1 &353134447
 GameObject:
   m_ObjectHideFlags: 0
@@ -38211,7 +38213,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296649349}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -38222,7 +38224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af2ef634e9ae6a243974a5b059a3a94f, type: 2}
+  - {fileID: 2100000, guid: 58b4dd8dad6f30b4cbdb35f86e8b0cc8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -60523,7 +60525,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19042
+  m_Name: pb_Mesh31352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

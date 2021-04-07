@@ -51,7 +51,12 @@ public class fractalFlicking : MonoBehaviour
 
 
             float coef = (float)Weistrasse.NextValue();
-            solidMat.SetColor("_EmissionColor", new Color(coef*Weistrasse.Color.r, coef * Weistrasse.Color.g , coef * Weistrasse.Color.b , 1));
+            Color fractalColor = new Color(coef * Weistrasse.Color.r, coef * Weistrasse.Color.g, coef * Weistrasse.Color.b, 1);
+            solidMat.SetColor("_EmissionColor", new Color(coef * Weistrasse.Color.r, coef * Weistrasse.Color.g, coef * Weistrasse.Color.b, 1));
+            curtainMat.SetColor("_BaseColor", new Color(1,1,1, Weistrasse.Alpha));
+            curtainMat.SetColor("_EmissionColor", new Color(coef * Weistrasse.Color.r, coef * Weistrasse.Color.g, coef * Weistrasse.Color.b, 1));
+
+
             int mode = Weistrasse.mode;
             switch (mode)
             {
@@ -83,10 +88,7 @@ public class fractalFlicking : MonoBehaviour
             if(pipe.GetComponent<Transform>().localPosition.z!= (float)Weistrasse.DiscDist)
                 pipe.GetComponent<Transform>().localPosition = new Vector3(pos.x,pos.y,(float)Weistrasse.DiscDist);
 
-            if (curtainMat.color.a != Weistrasse.Alpha)
-            {
-                curtainMat.color(new Color(0,0,0, Weistrasse.Alpha);
-            }
+
         }
     }
 }
