@@ -77,7 +77,7 @@ namespace Assets
 
             Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            IPEndPoint ipEndpoint = new IPEndPoint(localAddress, 2200);
+            IPEndPoint ipEndpoint = new IPEndPoint(localAddress, 10500);
 
             listenSocket.Bind(ipEndpoint);
 
